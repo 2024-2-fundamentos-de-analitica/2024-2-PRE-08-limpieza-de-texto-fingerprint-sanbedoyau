@@ -4,7 +4,7 @@ import os
 
 import pandas as pd  # type: ignore
 
-from _solution import clean_data
+from homework import clean_data
 
 
 def test_homework():
@@ -12,13 +12,13 @@ def test_homework():
 
     clean_data.main(
         "files/input/input.txt",
-        "files/output/output.txt",
+        "files/output.txt",
     )
 
-    if not os.path.exists("files/output/test.csv"):
+    if not os.path.exists("files/test.csv"):
         raise FileNotFoundError("File 'files/test.csv' not found")
 
-    test = pd.read_csv("files/output/test.csv", index_col=None)
+    test = pd.read_csv("files/test.csv", index_col=None)
 
     assert test.loc[0, "key"] == "adhoc queri"
     assert test.loc[6, "key"] == "agricultur product"
